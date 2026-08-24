@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Netcode Engine</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .dashboard {
+            width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #58a6ff;
+        }
+        .toggles label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        canvas {
+            background-color: #010409;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+        .legend {
+            width: 800px;
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .box { width: 14px; height: 14px; }
+        .box.green { background: #3fb950; }
+        .box.red { background: #f85149; }
+        .box.ghost { border: 1px dashed #8b949e; background: transparent;}
+        .box.ai { background: #a371f7; border-radius: 50%; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Distributed Systems Netcode</h1>
+        <div class="toggles">
+            <label>
+                <input type="checkbox" id="lagToggle"> Simulate 250ms Latency
+            </label>
+        </div>
+    </div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div class="legend">
+        <div class="legend-item"><div class="box green"></div> Local Player (Predicted)</div>
+        <div class="legend-item"><div class="box ghost"></div> Server Authoritative Ghost</div>
+        <div class="legend-item"><div class="box red"></div> Opponents</div>
+        <div class="legend-item"><div class="box ai"></div> Server AI Entity</div>
+    </div>
+    <script src="client.js"></script>
+</body>
+</html>
