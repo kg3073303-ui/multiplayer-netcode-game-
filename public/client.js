@@ -1,6 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const ws = new WebSocket(`ws://${window.location.host}`);
+const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+const ws = new WebSocket(protocol + window.location.host);
 const lagToggle = document.getElementById('lagToggle');
 
 let serverPlayers = {};
